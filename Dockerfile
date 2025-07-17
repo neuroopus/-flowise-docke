@@ -2,13 +2,13 @@ FROM node:18
 
 WORKDIR /app
 
-# Clona apenas os arquivos necessários (evita bugs)
+# Clona o repositório oficial
 RUN git clone https://github.com/FlowiseAI/Flowise.git .
 
-# Instala Yarn e dependências com segurança
-RUN npm install -g yarn && yarn install --frozen-lockfile
+# Usa o Yarn já instalado e instala dependências com segurança
+RUN yarn install --frozen-lockfile
 
-# Build do projeto
+# Faz build do projeto
 RUN yarn build
 
 EXPOSE 3000
